@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "889681794133",
+    "project_id": "solar-magpie-412303",
+    "storage_bucket": "solar-magpie-412303.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889681794133:android:876c0db6f1350e0f3730dc",
+        "android_client_info": {
+          "package_name": "com.example.emedoc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqOQEEy-vqvcYEEaixVDkNzPtZU29yfMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
