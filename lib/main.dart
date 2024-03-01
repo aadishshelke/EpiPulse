@@ -1,61 +1,29 @@
+import 'package:emedoc/models/hospital_model.dart';
+import 'package:emedoc/emedoc_for_hospital/Screens/hospital_main_screen.dart';
+import 'package:emedoc/emedoc_for_hospital/repositories/auth_repository.dart';
+import 'package:emedoc/emedoc_for_users/Screens/main_entry_screen.dart';
+import 'package:emedoc/models/user_model.dart';
+import 'package:emedoc/emedoc_for_users/repositories/auth_repository.dart';
+import 'package:emedoc/landing_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'My App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int counter = 0;
-
-  void incrementCounter() {
-    setState(() {
-      counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('My App'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Counter:',
-              style: TextStyle(fontSize: 24),
-            ),
-            Text(
-              '$counter',
-              style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: incrementCounter,
-        child: Icon(Icons.add),
-      ),
-    );
-  }
+  Userinfo? user = await getCurrentUserData();
+  Hospitalinfo? hospital = await getCurrentHospitalData();
+  runApp(
+    MaterialApp(
+      home: user != null
+          ? UserMainScreen()
+          : hospital != null
+              ? HospitalMainScreen()
+              : LandingScreen(),
+    ),
+  );
 }
