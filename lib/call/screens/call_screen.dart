@@ -1,7 +1,6 @@
 import 'package:agora_uikit/agora_uikit.dart';
 import 'package:emedoc/agora_config.dart';
 import 'package:emedoc/call/repository/call_repository.dart';
-import 'package:emedoc/emedoc_for_users/repositories/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

@@ -15,19 +15,13 @@ Future<Userinfo?> getCurrentUserData(String uid) async {
   return currentUser;
 }
 
-Stream<List<EmergencyModel>> getEmergencies() async* {
-  var snapshot = await firestore
+Stream<List<EmergencyModel>> getEmergencies() {
+  var collection = firestore
       .collection('emergency')
       .doc(auth.currentUser!.uid)
-      .collection('users')
-      .get();
+      .collection('users');
 
-  List<EmergencyModel> emergencyCalls = [];
-  for (var doc in snapshot.docs) {
-    // String uid = doc.id;
-    EmergencyModel? emergency = EmergencyModel.fromMap(doc.data());
-    emergencyCalls.add(emergency);
-  }
-
-  yield emergencyCalls;
+  return collection.snapshots().map((snapshot) => snapshot.docs
+      .map((doc) => EmergencyModel.fromMap(doc.data()))
+      .toList());
 }
