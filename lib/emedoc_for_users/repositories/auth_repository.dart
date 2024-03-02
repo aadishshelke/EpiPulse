@@ -15,7 +15,7 @@ String verificationid = '';
 Userinfo? currentUser;
 
 void sendPhoneNumber(String phonenumber, BuildContext context) async {
-  print(phonenumber);
+  
   await auth.verifyPhoneNumber(
     phoneNumber: phonenumber,
     verificationCompleted: (PhoneAuthCredential credential) async {

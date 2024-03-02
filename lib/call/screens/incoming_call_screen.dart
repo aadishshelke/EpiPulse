@@ -23,7 +23,7 @@ class IncomingCallScreen extends StatelessWidget {
           EmergencyModel emergency = EmergencyModel.fromMap(
               snapshot.data!.data() as Map<String, dynamic>);
 
-          if (emergency.callId != 'Not Yet Provided') {
+          if (emergency.callId != 'NotYetProvided') {
             return Scaffold(
               body: Container(
                 alignment: Alignment.center,
@@ -66,7 +66,7 @@ class IncomingCallScreen extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (context) => CallScreen(
                                   channelId: emergency.callId,
-                                  hospitalUid: hospitalUid,
+                                  hospitalUid: emergency.hospitalUid,
                                   patientUid: emergency.patientUid,
                                 ),
                               ),

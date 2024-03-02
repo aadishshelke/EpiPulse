@@ -55,9 +55,9 @@ class EmergencyModel {
       longtitude: map['longtitude'] ?? '',
 
       vidCallStatus: map['vidCallStatus'] ?? 1,
-      callId: map['callId'] ?? 'Not yet provided',
+      callId: map['callId'] ?? 'NotYetProvided',
 
-      medicalDetailsUid: map['medicalDetailsUid'] ?? 'Not yet provided',
+      medicalDetailsUid: map['medicalDetailsUid'] ?? 'NotYetProvided',
     );
   }
 }

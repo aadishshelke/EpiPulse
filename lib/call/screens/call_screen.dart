@@ -1,6 +1,7 @@
 import 'package:agora_uikit/agora_uikit.dart';
 import 'package:emedoc/agora_config.dart';
 import 'package:emedoc/call/repository/call_repository.dart';
+import 'package:emedoc/emedoc_for_users/repositories/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -30,8 +31,9 @@ class _CallScreenState extends State<CallScreen> {
     client = AgoraClient(
       agoraConnectionData: AgoraConnectionData(
         appId: AgoraConfig.appId,
-        channelName: widget.channelId,
-        tokenUrl: baseUrl,
+        channelName: 'emedoc',
+        tempToken:
+            '007eJxTYCjOuT5h94tf2VWrza9JJXEqXpF+x1/2L7vMn+EMxwEuzpkKDCnmSWnJFgbmhqlpKSYmJqaJpkkWaUaGZsmJFqnG5sameoWPUxsCGRnixS+zMjJAIIjPxpCam5qSn8zAAAB8sB9/',
       ),
     );
     initAgora();
@@ -50,31 +52,46 @@ class _CallScreenState extends State<CallScreen> {
         ),
       );
     }
-    return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            AgoraVideoViewer(client: client!),
-            AgoraVideoButtons(
-              client: client!,
-              disconnectButtonChild: ElevatedButton(
-                onPressed: () async {
-                  await client!.engine.leaveChannel();
-                  if (context.mounted) {
-                    endCall(
-                      context: context,
-                      patientUid: widget.patientUid,
-                      hospitalUid: widget.hospitalUid,
-                    );
-                  }
-                },
-                child: const Icon(
-                  Icons.call_end,
-                  color: Colors.red,
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        body: SafeArea(
+          child: Stack(
+            children: [
+              AgoraVideoViewer(
+                client: client!,
+                showNumberOfUsers: true,
+              ),
+              AgoraVideoButtons(
+                client: client!,
+                disconnectButtonChild: ElevatedButton(
+                  onPressed: () async {
+                    if (context.mounted) {
+                      endCall(
+                        context: context,
+                        patientUid: widget.patientUid,
+                        hospitalUid: widget.hospitalUid,
+                      );
+                    }
+                    await client!.engine.leaveChannel();
+                    await client!.engine.release();
+                  },
+                  child: const Icon(
+                    Icons.call_end,
+                    color: Colors.red,
+                  ),
                 ),
               ),
-            ),
-          ],
+              // Text(
+              //   widget.channelId,
+              //   style: const TextStyle(
+              //     color: Colors.white,
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
+            ],
+          ),
         ),
       ),
     );

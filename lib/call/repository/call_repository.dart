@@ -60,7 +60,7 @@ void endCall({
         .doc(hospitalUid)
         .collection('users')
         .doc(patientUid)
-        .update({'callId': ''});
+        .update({'callId': 'NotYetProvided'});
 
     if (!context.mounted) return;
 

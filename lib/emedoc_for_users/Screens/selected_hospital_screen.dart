@@ -61,9 +61,9 @@ class _SelectedHospitalScreenState extends State<SelectedHospitalScreen> {
               onPressed: () async {
                 medicalDetailsUid = await getMedicalDetailsUidwithPhoneNumber(
                     textcontroller.text);
-                if (medicalDetailsUid == 'User not found') {
+                if (medicalDetailsUid == 'UserNotFound') {
                   if (context.mounted) {
-                    showSnackBar(context: context, content: 'User not found');
+                    showSnackBar(context: context, content: 'UserNotFound');
                   }
                 } else {
                   setMedicalDetailsUid(widget.hospitalUid, medicalDetailsUid);
@@ -96,7 +96,7 @@ class _SelectedHospitalScreenState extends State<SelectedHospitalScreen> {
             const Text(
               'DIRECT DIAL',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 25,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
@@ -107,34 +107,63 @@ class _SelectedHospitalScreenState extends State<SelectedHospitalScreen> {
               onPressed: () async {
                 await dial();
               },
-              width: size.width * 0.7,
+              width: size.width * 0.94,
               color: appBarColor,
             ),
             const SizedBox(height: 40),
             const Text(
-              'VIDEO CONFERENCING',
+              'VIDEO CALL',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 25,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
             ),
             const SizedBox(height: 10),
-            CustomButton(
-              text: 'Request',
-              onPressed: () {
-                setState(() {
-                  requestVidCall(widget.hospitalUid, widget.currentPosition);
-                });
+            StreamBuilder(
+              stream: checkVidCallStatus(
+                  widget.hospitalUid, auth.currentUser!.uid),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: Text('Loading...'),
+                  );
+                }
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    CustomButton(
+                      width: size.width * 0.94,
+                      onPressed: () {
+                        if (snapshot.data != 2) {
+                          requestVidCall(
+                              widget.hospitalUid, widget.currentPosition);
+                        }
+                      },
+                      text: snapshot.data == 1
+                          ? 'Request'
+                          : snapshot.data == 2
+                              ? 'Request Sent'
+                              : snapshot.data == 3
+                                  ? 'Accepted : Request Again'
+                                  : 'Declined : Request Again',
+                      color: snapshot.data == 1
+                          ? Colors.blue
+                          : snapshot.data == 2
+                              ? Colors.yellow
+                              : snapshot.data == 3
+                                  ? Colors.green
+                                  : Colors.red,
+                    ),
+                  ],
+                );
               },
-              width: size.width * 0.7,
-              color: Colors.blue, // Adjust button color
             ),
             const SizedBox(height: 40),
             const Text(
               'AMBULANCE',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 25,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
@@ -153,7 +182,7 @@ class _SelectedHospitalScreenState extends State<SelectedHospitalScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     CustomButton(
-                      width: size.width * 0.45,
+                      width: size.width * 0.6,
                       onPressed: () {
                         if (snapshot.data == 1) {
                           requestAmbulance(
@@ -176,7 +205,7 @@ class _SelectedHospitalScreenState extends State<SelectedHospitalScreen> {
                                   : Colors.red,
                     ),
                     CustomButton(
-                      width: size.width * 0.45,
+                      width: size.width * 0.3,
                       onPressed: () {
                         if (snapshot.data == 3) {
                           Navigator.of(context).push(MaterialPageRoute(
@@ -185,7 +214,7 @@ class _SelectedHospitalScreenState extends State<SelectedHospitalScreen> {
                         }
                       },
                       text: 'Track',
-                      color: appBarColor,
+                      color: snapshot.data==3?   appBarColor:Colors.grey,
                     ),
                   ],
                 );
@@ -193,9 +222,9 @@ class _SelectedHospitalScreenState extends State<SelectedHospitalScreen> {
             ),
             const SizedBox(height: 40),
             const Text(
-              'SHARE DETAILS',
+              'MEDICAL DETAILS',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 25,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
@@ -205,7 +234,7 @@ class _SelectedHospitalScreenState extends State<SelectedHospitalScreen> {
               text: 'Share My Medical Details',
               onPressed: () => setMedicalDetailsUid(
                   widget.hospitalUid, auth.currentUser!.uid),
-              width: size.width * 0.7,
+                      width: size.width * 0.94,
               color: appBarColor,
             ),
             const SizedBox(height: 25),
@@ -214,7 +243,7 @@ class _SelectedHospitalScreenState extends State<SelectedHospitalScreen> {
               onPressed: () async {
                 await othersMedicalDetails();
               },
-              width: size.width * 0.7,
+                      width: size.width * 0.94,
               color: appBarColor,
             ),
           ],

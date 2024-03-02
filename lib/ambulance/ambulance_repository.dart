@@ -24,8 +24,8 @@ Future<void> setEmergency(String hospitalUid, Position currrentLocation) async {
       latitude: latitude.toString(),
       longtitude: longitude.toString(),
       vidCallStatus: 1,
-      callId: 'Not yet provided',
-      medicalDetailsUid: 'Not yet provided',
+      callId: 'NotYetProvided',
+      medicalDetailsUid: 'NotYetProvided',
     );
 
     try {
@@ -70,6 +70,8 @@ Future<void> requestVidCall(
         .collection('users')
         .doc(auth.currentUser!.uid)
         .update({'vidCallStatus': 1});
+
+    updateVidCallStatus(hospitalUid, auth.currentUser!.uid, 2);
   } catch (e) {
     print('Error requesting Video Call: $e');
   }
@@ -124,7 +126,7 @@ void updateVidCallStatus(
       .doc(hospitalUid)
       .collection('users')
       .doc(patientUid)
-      .update({'ambulanceStatus': value});
+      .update({'vidCallStatus': value});
 }
 
 Future<void> setMedicalDetailsUid(String hospitalUid, String uid) async {
@@ -149,7 +151,7 @@ Future<String> getMedicalDetailsUidwithPhoneNumber(String number) async {
       return doc.id;
     }
   }
-  return 'User not found';
+  return 'UserNotFound';
 }
 
 Future<String> checkMedicalDetailsUid(String hospitalUid, String userUid) async {
@@ -161,7 +163,7 @@ Future<String> checkMedicalDetailsUid(String hospitalUid, String userUid) async 
       .get();
 
   if (snapshot.exists) {
-    return snapshot.data()?['detailsUid'] ?? 'Not yet provided';
+    return snapshot.data()?['detailsUid'] ?? 'NotYetProvided';
   }
-  return 'Not yet provided';
+  return 'NotYetProvided';
 }

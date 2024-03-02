@@ -49,57 +49,48 @@ class _HospitalMainScreenState extends State<HospitalMainScreen> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // Other widgets (e.g., header, input field) can go here
+        child: StreamBuilder<List<EmergencyModel>>(
+          stream: getEmergencies(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Scaffold(
+                body: Center(
+                  child: Text('Loading'),
+                ),
+              );
+            }
+            if (!snapshot.hasData || snapshot.data!.isEmpty) {
+              return const Scaffold(
+                body: Center(
+                  child: Text('No Emergencies Yet'),
+                ),
+              );
+            }
+            return ListView.builder(
+              itemCount: snapshot.data!.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                var emergency = snapshot.data![index];
 
-            Container(
-              height: 300, // Example height
-              child: StreamBuilder<List<EmergencyModel>>(
-                stream: getEmergencies(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Scaffold(
-                      body: Center(
-                        child: Text('Loading'),
+                return ListTile(
+                  title: Text(
+                    emergency.patientName,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 17),
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            Selectedemergency(emergency: emergency),
                       ),
                     );
-                  }
-                  if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                    return const Scaffold(
-                      body: Center(
-                        child: Text('No Emergencies Yet'),
-                      ),
-                    );
-                  }
-                  return ListView.builder(
-                    itemCount: snapshot.data!.length,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      var emergency = snapshot.data![index];
-
-                      return ListTile(
-                        title: Text(
-                          emergency.patientName,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 17),
-                        ),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  Selectedemergency(emergency: emergency),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                  );
-                },
-              ),
-            ),
-          ],
+                  },
+                );
+              },
+            );
+          },
         ),
       ),
     );

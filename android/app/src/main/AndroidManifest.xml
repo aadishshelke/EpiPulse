@@ -13,11 +13,13 @@
     <!-- The Agora SDK requires Bluetooth permissions in case users are using Bluetooth devices.-->
     <uses-permission  android:name="android.permission.BLUETOOTH"  />
 
-
     <application
         android:label="emedoc"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        
+    <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCqPs91zhCkNMI9l5Usuu-pQIqewR3sfzc"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
