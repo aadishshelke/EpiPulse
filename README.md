@@ -38,18 +38,17 @@ Emedoc is an app designed to facilitate communication with hospitals during medi
 <!-- UI -->
 ## UI
 - User Side
-![Screenshot 1](https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/496c8ce9-f16b-42f9-8338-33d64d650bea){:width="200px"}
-![Screenshot 2](https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/01ba6ddd-dfd3-4a15-abea-2875a27f91c5){:width="200px"}
-![Screenshot 3](https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/c6ed8b48-8eff-4a72-9de9-124ff5bee150){:width="200px"}
-![Screenshot 4](https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/cc500330-4fea-401e-9ef6-1911d58d6fad){:width="200px"}
-![Screenshot 5](https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/f23d4954-0800-4900-9bf1-6736c338ae14){:width="200px"}
-![Screenshot 6](https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/4e8113d8-80a1-4e55-a114-12bea9e12b88){:width="200px"}
-![Screenshot 7](https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/61cef9fe-4031-4e4c-9a83-ca13a67e7805){:width="200px"}
-![Screenshot 8](https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/49017b0c-3f73-4c2b-b83a-9593d4b755c7){:width="200px"}
+<img src="https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/496c8ce9-f16b-42f9-8338-33d64d650bea" alt="Screenshot 1" width="200"/>
+<img src="https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/01ba6ddd-dfd3-4a15-abea-2875a27f91c5" alt="Screenshot 2" width="200"/>
+<img src="https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/c6ed8b48-8eff-4a72-9de9-124ff5bee150" alt="Screenshot 3" width="200"/>
+<img src="https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/cc500330-4fea-401e-9ef6-1911d58d6fad" alt="Screenshot 4" width="200"/>
+<img src="https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/f23d4954-0800-4900-9bf1-6736c338ae14" alt="Screenshot 5" width="200"/>
+<img src="https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/4e8113d8-80a1-4e55-a114-12bea9e12b88" alt="Screenshot 6" width="200"/>
+<img src="https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/61cef9fe-4031-4e4c-9a83-ca13a67e7805" alt="Screenshot 7" width="200"/>
 - Hospital Side
-![Screenshot 8](https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/87e9be07-c262-466f-9508-5100de3e142e){:width="200px"}
-![Screenshot 9](https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/dcae0686-9ab6-4ceb-bb54-46b0fbf1c6fe){:width="200px"}
-![Screenshot 10](https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/e8473433-d121-4843-a3db-a92018e03050){:width="200px"}
+<img src="https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/49017b0c-3f73-4c2b-b83a-9593d4b755c7" alt="Screenshot 8" width="200"/>
+<img src="https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/dcae0686-9ab6-4ceb-bb54-46b0fbf1c6fe" alt="Screenshot 9" width="200"/>
+<img src="https://github.com/Shubhamsahu1101/Emedoc/assets/123875622/e8473433-d121-4843-a3db-a92018e03050" alt="Screenshot 10" width="200"/>
 
 <!-- Getting Started -->
 ## Getting Started
