@@ -3,6 +3,7 @@ import 'package:emedoc/utils/colors.dart';
 import 'package:emedoc/utils/custom_button.dart';
 import 'package:emedoc/emedoc_for_users/repositories/auth_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class LoginScreenUser extends StatefulWidget {
   const LoginScreenUser({Key? key}) : super(key: key);
@@ -29,7 +30,7 @@ class _LoginScreenUserState extends State<LoginScreenUser> {
 
   void _send() {
     if (_formKey.currentState!.validate()) {
-      String ph = '+' + countrycode + textcontroller.text;
+      String ph = '+$countrycode${textcontroller.text}';
       sendPhoneNumber(ph, context);
     }
   }
@@ -64,71 +65,77 @@ class _LoginScreenUserState extends State<LoginScreenUser> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomButton(
-              text: '📍  Pick Country',
-              onPressed: () => showCountryPicker2(context),
-              width: size.width * 0.6,
-              color: appBarColor,
-            ),
-            SizedBox(
-              height: size.height * 0.012,
-            ),
-            Row(
-              children: [
-                Text('+$countrycode'),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Container(
-                    width: 150,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
+            GestureDetector(
+              onTap: () => showCountryPicker2(context),
+              child: Container(
+                height: 68,
+                width: size.width * 0.81,
+                decoration: BoxDecoration(
+                  color: backgroundColor,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: appBarColor, width: 1.5),
+                ),
+                child: const Center(
+                  child: Text(
+                    'Pick a Country',
+                    style: TextStyle(
+                      color: textColor,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
                     ),
-                    child: Form(
-                      key: _formKey,
-                      child: TextFormField(
-                        validator: _validatePhoneNumber,
-                        controller: textcontroller,
-                        style: const TextStyle(color: Colors.black),
-                        decoration: const InputDecoration(
-                          hintText: 'Enter Phone Number',
-                          prefixIcon: Icon(Icons.phone),
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 12),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: size.width * 0.15,
+                  height: 65,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: appBarColor, width: 1.5),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Center(
+                    child: Text('+$countrycode'),
+                  ),
+                ),
+                const SizedBox(width: 5),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: appBarColor, width: 1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  width: size.width * 0.65,
+                  child: Form(
+                    key: _formKey,
+                    child: TextFormField(
+                      controller: textcontroller,
+                      validator: _validatePhoneNumber,
+                      obscureText: false,
+                      decoration: const InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: appBarColor),
                         ),
-                        keyboardType: TextInputType.number,
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: textColor),
+                        ),
+                        hintText: "Phone Number",
                       ),
+                      keyboardType: TextInputType.number,
                     ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 16),
-            ElevatedButton(
+            const SizedBox(height: 20),
+            CustomButton(
+              text: "Next",
               onPressed: _send,
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                backgroundColor: appBarColor,
-                elevation: 5,
-              ),
-              child: const Text(
-                'Next',
-                style: TextStyle(
-                  color: textColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              width: size.width * 0.8,
+              color: appBarColor,
             ),
           ],
         ),

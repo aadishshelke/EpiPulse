@@ -20,10 +20,10 @@ void main() async {
   runApp(
     MaterialApp(
       home: user != null
-          ? UserMainScreen()
+          ? const UserMainScreen()
           : hospital != null
-              ? HospitalMainScreen()
-              : LandingScreen(),
+              ? const HospitalMainScreen()
+              : const LandingScreen(),
     ),
   );
 }

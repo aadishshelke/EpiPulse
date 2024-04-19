@@ -17,37 +17,56 @@ class LandingScreen extends StatelessWidget {
         ),
         backgroundColor: appBarColor,
       ),
-      body: Row(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height: size.height * 0.1),
-          ElevatedButton(
-            onPressed: () {
+          GestureDetector(
+            onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) => const LoginScreenUser()),
               );
             },
-            child: const Text(
-              'User',
-              style: TextStyle(color: textColor, fontSize: 18),
-            ), // Set the text color and font size here
+            child: Container(
+              padding: const EdgeInsets.all(25),
+              margin: const EdgeInsets.symmetric(horizontal: 25),
+              decoration: BoxDecoration(
+                color: appBarColor,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Center(
+                child: Text(
+                  'User',
+                  style: TextStyle(color: textColor, fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
           ),
-          SizedBox(width: size.width * 0.1),
-          ElevatedButton(
-            onPressed: () {
+          SizedBox(height: size.height * 0.01),
+          GestureDetector(
+            onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) => const LoginScreenHospital()),
               );
             },
-            child: const Text(
-              'Hospital',
-              style: TextStyle(color: textColor, fontSize: 18),
-            ), // Set the text color and font size here
+            child: Container(
+              padding: const EdgeInsets.all(25),
+              margin: const EdgeInsets.symmetric(horizontal: 25),
+              decoration: BoxDecoration(
+                color: appBarColor,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Center(
+                child: Text(
+                  'Hospital',
+                  style: TextStyle(color: textColor, fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
           ),
         ],
       ),

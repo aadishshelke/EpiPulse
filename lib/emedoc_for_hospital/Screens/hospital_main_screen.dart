@@ -48,25 +48,25 @@ class _HospitalMainScreenState extends State<HospitalMainScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: StreamBuilder<List<EmergencyModel>>(
-          stream: getEmergencies(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Scaffold(
-                body: Center(
-                  child: Text('Loading'),
-                ),
-              );
-            }
-            if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return const Scaffold(
-                body: Center(
-                  child: Text('No Emergencies Yet'),
-                ),
-              );
-            }
-            return ListView.builder(
+      body: StreamBuilder<List<EmergencyModel>>(
+        stream: getEmergencies(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Scaffold(
+              body: Center(
+                child: Text('Loading'),
+              ),
+            );
+          }
+          if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const Scaffold(
+              body: Center(
+                child: Text('No Emergencies Yet'),
+              ),
+            );
+          }
+          return SingleChildScrollView(
+            child: ListView.builder(
               itemCount: snapshot.data!.length,
               shrinkWrap: true,
               itemBuilder: (context, index) {
@@ -89,9 +89,9 @@ class _HospitalMainScreenState extends State<HospitalMainScreen> {
                   },
                 );
               },
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

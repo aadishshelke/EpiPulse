@@ -15,7 +15,6 @@ String verificationid = '';
 Userinfo? currentUser;
 
 void sendPhoneNumber(String phonenumber, BuildContext context) async {
-  
   await auth.verifyPhoneNumber(
     phoneNumber: phonenumber,
     verificationCompleted: (PhoneAuthCredential credential) async {
@@ -35,7 +34,7 @@ void sendPhoneNumber(String phonenumber, BuildContext context) async {
       verificationid = verificationId;
       // Update the UI - wait for the user to enter the SMS code
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => OTPScreen()));
+          context, MaterialPageRoute(builder: (context) => const OTPScreen()));
 
       // Sign the user in (or link) with the credential
     },
@@ -72,17 +71,26 @@ Future<Userinfo?> getCurrentUserData() async {
 }
 
 void finishLogin(BuildContext context) async {
-  print('hi');
   var userData = await FirebaseFirestore.instance
       .collection('users')
       .doc(auth.currentUser?.uid)
       .get();
   if (userData.data() != null) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => UserMainScreen()));
+    if (context.mounted) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const UserMainScreen()),
+        (route) => false,
+      );
+    }
   } else {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => UserInfoScreen()));
+    if (context.mounted) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const UserInfoScreen()),
+        (route) => false,
+      );
+    }
   }
 }
 
@@ -95,6 +103,8 @@ void saveUserData(Userinfo user) {
 
 void signOut(BuildContext context) {
   auth.signOut();
-  Navigator.pushAndRemoveUntil(context,
-      MaterialPageRoute(builder: (context) => LoginScreenUser()), (route) => false);
+  Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => const LoginScreenUser()),
+      (route) => false);
 }

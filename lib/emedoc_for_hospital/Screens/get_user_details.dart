@@ -20,51 +20,51 @@ class Userdetailscreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ListTile(
-                title: Text('First Name', style: TextStyle(fontWeight: FontWeight.bold)),
+                title: const Text('First Name', style: TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text(user.firstName),
               ),
               ListTile(
-                title: Text('Last Name', style: TextStyle(fontWeight: FontWeight.bold)),
+                title: const Text('Last Name', style: TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text(user.lasttName),
               ),
               ListTile(
-                title: Text('Address', style: TextStyle(fontWeight: FontWeight.bold)),
+                title: const Text('Address', style: TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text(user.address),
               ),
               ListTile(
-                title: Text('Phone Number', style: TextStyle(fontWeight: FontWeight.bold)),
+                title: const Text('Phone Number', style: TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text(user.phoneNumber),
               ),
               ListTile(
-                title: Text('Blood Group', style: TextStyle(fontWeight: FontWeight.bold)),
+                title: const Text('Blood Group', style: TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text(user.bloodGroup),
               ),
               ListTile(
-                title: Text('Diabetes', style: TextStyle(fontWeight: FontWeight.bold)),
+                title: const Text('Diabetes', style: TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text(user.diabeties ? 'Yes' : 'No'),
               ),
               ListTile(
-                title: Text('Allergies', style: TextStyle(fontWeight: FontWeight.bold)),
+                title: const Text('Allergies', style: TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text(user.allergies),
               ),
               ListTile(
-                title: Text('Hypertension', style: TextStyle(fontWeight: FontWeight.bold)),
+                title: const Text('Hypertension', style: TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text(user.hypertension ? 'Yes' : 'No'),
               ),
               ListTile(
-                title: Text('Asthma', style: TextStyle(fontWeight: FontWeight.bold)),
+                title: const Text('Asthma', style: TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text(user.asthama ? 'Yes' : 'No'),
               ),
               ListTile(
-                title: Text('Family Doctor Name', style: TextStyle(fontWeight: FontWeight.bold)),
+                title: const Text('Family Doctor Name', style: TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text(user.nameOfFamilyDoc),
               ),
               ListTile(
-                title: Text('Family Doctor Number', style: TextStyle(fontWeight: FontWeight.bold)),
+                title: const Text('Family Doctor Number', style: TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text(user.numOfFamilyDoc),
               ),
               ListTile(
-                title: Text('Special Instructions', style: TextStyle(fontWeight: FontWeight.bold)),
+                title: const Text('Special Instructions', style: TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text(user.specialInstructions),
               ),
             ],

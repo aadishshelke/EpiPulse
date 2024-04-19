@@ -56,7 +56,7 @@ class _HospitalInfoScreenState extends State<HospitalInfoScreen> {
 
     Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => HospitalMainScreen()),
+        MaterialPageRoute(builder: (context) => const HospitalMainScreen()),
         (route) => false);
   }
 
@@ -65,7 +65,7 @@ class _HospitalInfoScreenState extends State<HospitalInfoScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text('Hospita; Information', style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
+        title: const Text('Hospita; Information', style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
         backgroundColor: appBarColor,
       ),
       body: SingleChildScrollView(
@@ -77,15 +77,15 @@ class _HospitalInfoScreenState extends State<HospitalInfoScreen> {
                 child: Column(
                   children: [
                     TextFormField(
-                      decoration: InputDecoration(hintText: 'Name of Hospital'),
+                      decoration: const InputDecoration(hintText: 'Name of Hospital'),
                       controller: nameController,
                     ),
                     TextFormField(
-                      decoration: InputDecoration(hintText: 'Address'),
+                      decoration: const InputDecoration(hintText: 'Address'),
                       controller: addressController,
                     ),
                     TextFormField(
-                      decoration: InputDecoration(hintText: 'Phone Number'),
+                      decoration: const InputDecoration(hintText: 'Phone Number'),
                       controller: phonenoController,
                     ),
                    
@@ -102,7 +102,7 @@ class _HospitalInfoScreenState extends State<HospitalInfoScreen> {
               ),
               ElevatedButton(
                 onPressed: _finishLoginHospital,
-                child: Text('Next'),
+                child: const Text('Next'),
               ),
             ],
           ),

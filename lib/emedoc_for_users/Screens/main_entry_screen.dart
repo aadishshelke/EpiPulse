@@ -17,9 +17,9 @@ class _UserMainScreenState extends State<UserMainScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: appBarColor,
-        title: Text(
+        title: const Text(
           'Welcome User',
-         style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),
+         style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),
         ),
         actions: [
           PopupMenuButton(
@@ -36,7 +36,7 @@ class _UserMainScreenState extends State<UserMainScreen> {
                 child: const Text('Update Information'),
                 onTap: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => UserInfoScreen()),
+                  MaterialPageRoute(builder: (context) => const UserInfoScreen()),
                 ),
               )
             ],
@@ -50,7 +50,7 @@ class _UserMainScreenState extends State<UserMainScreen> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MapPage()),
+                MaterialPageRoute(builder: (context) => const MapPage()),
               );
               print('Emergency button pressed!');
             },
@@ -66,11 +66,11 @@ class _UserMainScreenState extends State<UserMainScreen> {
                     color: Colors.black.withOpacity(0.3),
                     blurRadius: 10.0,
                     spreadRadius: 2.0,
-                    offset: Offset(0, 4),
+                    offset: const Offset(0, 4),
                   ),
                 ],
               ),
-              child: Center(
+              child: const Center(
                 child: Text(
                   'Emergency',
                   style: TextStyle(

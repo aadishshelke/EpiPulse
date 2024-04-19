@@ -4,7 +4,7 @@ import 'package:emedoc/emedoc_for_hospital/repositories/auth_repository.dart';
 import 'package:flutter/material.dart';
 
 class OTPScreen extends StatelessWidget {
-  OTPScreen({super.key });
+  const OTPScreen({super.key });
   static const String routeName = 'otp-screen';
 
 

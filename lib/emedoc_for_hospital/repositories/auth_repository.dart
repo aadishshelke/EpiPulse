@@ -34,7 +34,7 @@ void sendPhoneNumberHospital(String phonenumber, BuildContext context) async {
       verificationid = verificationId;
       // Update the UI - wait for the user to enter the SMS code
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => OTPScreen()));
+          context, MaterialPageRoute(builder: (context) => const OTPScreen()));
 
       // Sign the user in (or link) with the credential
     },
@@ -60,17 +60,26 @@ void verifyOTPHospital(String userOTP, BuildContext context) async {
 }
 
 void finishLoginHospital(BuildContext context) async {
-  print('hi');
   var userData = await FirebaseFirestore.instance
       .collection('hospitals')
       .doc(auth.currentUser?.uid)
       .get();
   if (userData.data() != null) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HospitalMainScreen()));
+    if (context.mounted) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const HospitalMainScreen()),
+        ((route) => false),
+      );
+    }
   } else {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HospitalInfoScreen()));
+    if (context.mounted) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const HospitalInfoScreen()),
+        ((route) => false),
+      );
+    }
   }
 }
 
@@ -94,6 +103,8 @@ Future<Hospitalinfo?> getCurrentHospitalData() async {
 
 void signOutHospital(BuildContext context) {
   auth.signOut();
-  Navigator.pushAndRemoveUntil(context,
-      MaterialPageRoute(builder: (context) => LoginScreenHospital()), (route) => false);
+  Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => const LoginScreenHospital()),
+      (route) => false);
 }

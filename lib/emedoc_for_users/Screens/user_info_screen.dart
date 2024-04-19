@@ -27,7 +27,6 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   bool hypertension = false;
   bool asthma = false;
 
-
   void _finishLogin() {
     Userinfo user = Userinfo(
       firstName: firstNameController.text,
@@ -56,7 +55,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text('User Information', style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
+        title: const Text('User Information', style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
         backgroundColor: appBarColor,
       ),
       body: SingleChildScrollView(
