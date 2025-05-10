@@ -1,6 +1,6 @@
 {
-    "name": "emedoc",
-    "short_name": "emedoc",
+    "name": "epipulse",
+    "short_name": "epipulse",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBqOQEEy-vqvcYEEaixVDkNzPtZU29yfMY',
-    appId: '1:889681794133:android:876c0db6f1350e0f3730dc',
-    messagingSenderId: '889681794133',
-    projectId: 'solar-magpie-412303',
-    storageBucket: 'solar-magpie-412303.appspot.com',
+    apiKey: 'AIzaSyAKkc-J8vDDMUxuN8GAQseFEovq_FjuWho',
+    appId: '1:807136078657:android:19360a87e915bb29d04fc0',
+    messagingSenderId: '807136078657',
+    projectId: 'epipulse',
+    storageBucket: 'epipulse.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyA-FV-XGNC_IBfpPn6fmfxmumL0aWoiFK8',
-    appId: '1:889681794133:ios:e09f5233e128bdbe3730dc',
-    messagingSenderId: '889681794133',
-    projectId: 'solar-magpie-412303',
-    storageBucket: 'solar-magpie-412303.appspot.com',
-    iosBundleId: 'com.example.emedoc',
+    apiKey: 'AIzaSyAKkc-J8vDDMUxuN8GAQseFEovq_FjuWho',
+    appId: '1:807136078657:ios:19360a87e915bb29d04fc0',
+    messagingSenderId: '807136078657',
+    projectId: 'epipulse',
+    storageBucket: 'epipulse.firebasestorage.app',
+    iosBundleId: 'com.example.epipulse',
   );
 }

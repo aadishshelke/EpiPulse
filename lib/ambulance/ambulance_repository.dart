@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:emedoc/emedoc_for_hospital/Widget/get_userdata.dart';
-import 'package:emedoc/models/emergency_model.dart';
-import 'package:emedoc/emedoc_for_users/repositories/auth_repository.dart';
+import 'package:epipulse/epipulse_for_hospital/Widget/get_userdata.dart';
+import 'package:epipulse/models/emergency_model.dart';
+import 'package:epipulse/epipulse_for_users/repositories/auth_repository.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:epipulse/utils/shortcuts.dart';
 
 Future<void> setEmergency(String hospitalUid, Position currrentLocation) async {
   double latitude = currrentLocation.latitude;

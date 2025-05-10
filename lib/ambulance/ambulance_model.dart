@@ -1,5 +1,5 @@
-import 'package:emedoc/models/hospital_model.dart';
-import 'package:emedoc/models/user_model.dart';
+import 'package:epipulse/models/hospital_model.dart';
+import 'package:epipulse/models/user_model.dart';
 
 class Ambulanceinfo {
   final Userinfo user;

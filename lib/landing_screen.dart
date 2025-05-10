@@ -1,6 +1,6 @@
-import 'package:emedoc/emedoc_for_hospital/Screens/login_screen_hospital.dart';
-import 'package:emedoc/emedoc_for_users/Screens/login_screen.dart';
-import 'package:emedoc/utils/colors.dart';
+import 'package:epipulse/epipulse_for_hospital/Screens/login_screen_hospital.dart';
+import 'package:epipulse/epipulse_for_users/Screens/login_screen.dart';
+import 'package:epipulse/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class LandingScreen extends StatelessWidget {

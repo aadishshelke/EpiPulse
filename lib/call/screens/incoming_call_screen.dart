@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:emedoc/call/repository/call_repository.dart';
-import 'package:emedoc/call/screens/call_screen.dart';
-import 'package:emedoc/models/emergency_model.dart';
-import 'package:emedoc/utils/colors.dart';
+import 'package:epipulse/call/repository/call_repository.dart';
+import 'package:epipulse/call/screens/call_screen.dart';
+import 'package:epipulse/models/emergency_model.dart';
+import 'package:epipulse/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class IncomingCallScreen extends StatelessWidget {

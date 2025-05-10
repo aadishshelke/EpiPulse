@@ -1,4 +1,4 @@
-package com.example.emedoc
+package com.example.epipulse
 
 import io.flutter.embedding.android.FlutterActivity
 
