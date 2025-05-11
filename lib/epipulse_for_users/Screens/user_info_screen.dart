@@ -3,6 +3,7 @@ import 'package:epipulse/epipulse_for_users/Screens/main_entry_screen.dart';
 import 'package:epipulse/utils/colors.dart';
 import 'package:epipulse/epipulse_for_users/repositories/auth_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class UserInfoScreen extends StatefulWidget {
   const UserInfoScreen({super.key});
@@ -32,7 +33,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
       firstName: firstNameController.text,
       lasttName: lastNameController.text,
       address: addressController.text,
-      phoneNumber: 'aa',
+      phoneNumber: FirebaseAuth.instance.currentUser?.phoneNumber ?? '',
       bloodGroup: bloodGroupController.text,
       diabeties: diabetes,
       allergies: allergiesController.text,

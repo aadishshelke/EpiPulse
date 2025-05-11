@@ -1,5 +1,6 @@
 import 'package:epipulse/epipulse_for_hospital/Screens/login_screen_hospital.dart';
 import 'package:epipulse/epipulse_for_users/Screens/login_screen.dart';
+import 'package:epipulse/epipulse_for_users/Screens/symptom_reporting_screen.dart';
 import 'package:epipulse/utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,7 @@ class LandingScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const LoginScreenUser()),
+                    builder: (context) => const SymptomReportingScreen()),
               );
             },
             child: Container(

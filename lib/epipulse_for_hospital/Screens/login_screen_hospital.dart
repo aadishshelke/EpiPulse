@@ -4,6 +4,8 @@ import 'package:epipulse/utils/custom_button.dart';
 import 'package:epipulse/epipulse_for_hospital/repositories/auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:epipulse/epipulse_for_hospital/Screens/hospital_main_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreenHospital extends StatefulWidget {
   const LoginScreenHospital({super.key});
@@ -28,10 +30,15 @@ class _LoginScreenHospitalState extends State<LoginScreenHospital> {
     );
   }
 
-  void _send() {
+  void _send() async {
     if (_formKey.currentState!.validate()) {
-      String ph = '+$countrycode${textcontroller.text}';
-      sendPhoneNumberHospital(ph, context);
+      if (FirebaseAuth.instance.currentUser == null) {
+        await FirebaseAuth.instance.signInAnonymously();
+      }
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const HospitalMainScreen()),
+      );
     }
   }
 

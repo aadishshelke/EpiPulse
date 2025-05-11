@@ -17,29 +17,24 @@ Userinfo? currentUser;
 void sendPhoneNumber(String phonenumber, BuildContext context) async {
   print('Bypassing phone verification.');
   // Directly navigate to OTP or main screen if needed
+  finishLogin(context);
 }
 
 void verifyOTP(String userOTP, BuildContext context) async {
   print('Bypassing OTP verification.');
   // Directly navigate to main screen if needed
+  finishLogin(context);
 }
 
 Future<Userinfo?> getCurrentUserData() async {
-  // Return a dummy user for demonstration
-  return Userinfo(
-    firstName: 'Demo',
-    lasttName: 'User',
-    address: '123 Demo Street',
-    phoneNumber: '0000000000',
-    bloodGroup: 'O+',
-    diabeties: false,
-    allergies: '',
-    hypertension: false,
-    asthama: false,
-    nameOfFamilyDoc: '',
-    numOfFamilyDoc: '',
-    specialInstructions: '',
-  );
+  var data = await FirebaseFirestore.instance
+      .collection('users')
+      .doc(auth.currentUser?.uid)
+      .get();
+  if (data.data() != null) {
+    currentUser = Userinfo.fromMap(data.data()!);
+  }
+  return currentUser;
 }
 
 void finishLogin(BuildContext context) async {

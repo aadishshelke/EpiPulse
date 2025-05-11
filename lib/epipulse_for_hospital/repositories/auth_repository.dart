@@ -14,49 +14,13 @@ String verificationid = '';
 Hospitalinfo? currentHospital;
 
 void sendPhoneNumberHospital(String phonenumber, BuildContext context) async {
-  print(phonenumber);
-  await auth.verifyPhoneNumber(
-    phoneNumber: phonenumber,
-    verificationCompleted: (PhoneAuthCredential credential) async {
-      // ANDROID ONLY!
-
-      // Sign the user in (or link) with the auto-generated credential
-      await auth.signInWithCredential(credential);
-    },
-    verificationFailed: (FirebaseAuthException e) {
-      if (e.code == 'invalid-phone-number') {
-        print('The provided phone number is not valid.');
-      }
-
-      // Handle other errors
-    },
-    codeSent: (String verificationId, int? resendToken) async {
-      verificationid = verificationId;
-      // Update the UI - wait for the user to enter the SMS code
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const OTPScreen()));
-
-      // Sign the user in (or link) with the credential
-    },
-    codeAutoRetrievalTimeout: (String verificationId) {
-      // Auto-resolution timed out...
-    },
-  );
+  print('Bypassing phone verification.');
+  finishLoginHospital(context);
 }
 
 void verifyOTPHospital(String userOTP, BuildContext context) async {
-  try {
-    // Create a PhoneAuthCredential with the code
-    PhoneAuthCredential credential = PhoneAuthProvider.credential(
-        verificationId: verificationid, smsCode: userOTP);
-
-    // Sign the user in (or link) with the credential
-    await auth.signInWithCredential(credential).then((value) {
-      finishLoginHospital(context);
-    });
-  } on Exception catch (e) {
-    showSnackBar(context: context, content: e.toString());
-  }
+  print('Bypassing OTP verification.');
+  finishLoginHospital(context);
 }
 
 void finishLoginHospital(BuildContext context) async {

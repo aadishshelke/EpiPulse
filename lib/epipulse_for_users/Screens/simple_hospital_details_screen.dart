@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:epipulse/video_call_screen.dart';
 
 class SimpleHospitalDetailsScreen extends StatelessWidget {
   final String name;
@@ -139,11 +140,11 @@ class SimpleHospitalDetailsScreen extends StatelessWidget {
                 label: 'Request Video Call',
                 color: Colors.deepPurpleAccent,
                 onPressed: () {
-                  _showDetailsDialog(
+                  Navigator.push(
                     context,
-                    'Request Video Call',
-                    'Send Request',
-                    'Video call request sent. Await hospital approval.',
+                    MaterialPageRoute(
+                      builder: (context) => VideoCallScreen(channel: 'test_channel'),
+                    ),
                   );
                 },
               ),
